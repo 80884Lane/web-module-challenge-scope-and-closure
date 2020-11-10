@@ -28,11 +28,17 @@ console.log(processFirstItem(['foo','bar'],function(str){return str+str}));
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+
+  Counter1 will accumulate, counter2 will continue to be 1.
   
   2. Which of the two uses a closure? How can you tell?
+
+  Counter1 uses a closure. It's returning count plus 1 from the parent, count.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+
+     Counter1 would be better on a test or a quiz were there is 1 right answer and 1 wrong. Counter2 would be better in a cumulative test that takes right and wrong answers and gives grade.
 */
 
 // counter1 code
@@ -61,10 +67,8 @@ Use the inning function below to do the following:
   For example: invoking inning() should return a numerical score value of 0, 1, or 2
 */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(){
+  return Math.floor(Math.random() * Math.floor(3));
 }
 
 /* Task 3: finalScore()
@@ -80,9 +84,12 @@ For example: invoking finalScore(inning, 9) might return this object:
 }
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, inningCB){
+    return {
+      Home: inning(),
+      Away: inning()
+    }
 
-  /*Code Here*/
 
 }
 
@@ -91,8 +98,11 @@ function finalScore(/*code Here*/){
 // the function should take the inning function as an argument 
 // it should return an object with with a score for home and a score for away that that populates from invoking the inning callback. */
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
+function getInningScore(inning) {
+  return {
+    Home: inning(),
+    Away: inning()
+  }
 }
 /* Task 5: scoreboard()
 Use the scoreboard function below to do the following:
@@ -138,8 +148,19 @@ Use the scoreboard function below to do the following:
   */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inningCB, num) {
+  const startRuns = [];
+  let homeRuns = 0;
+  let awayRuns = 0;
+
+
+  for( let i = 1; i <= num; i++){
+    const runs = inningCB(num);
+    let homeRuns = homeRuns + runs
+    let awayRuns = awayRuns + runs
+    runs.push(`Inning ${num}: Away ${awayRuns} - Home ${homeRuns}`)
+  }
+  return startRuns
 }
 
 

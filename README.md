@@ -43,6 +43,9 @@ Find the file `index.js` and complete the tasks.
 Edit the `ReadMe` file with your answers.
 
 1. In your own words, define closure (1-2 sentences).
+
+Ability to access functions and variables on the parent level, from the child scope.
+
 2. Study the following code, then answer the questions below.
 
 ```js
@@ -64,8 +67,16 @@ dansRoll();
 ```
 
 a. Where is closure used in this code? How can you tell?
+
+Function inside of function. 
+
 b. Compare and contrast calling `dansRoll` the first and second time. What is always the same? What could change?
+
+Dan's roll will always have : "Dan rolled a" . newRoll will change randomly each time between 1-6
+
 c. What is the lexical scope of `newRoll`? 
+
+Variable inside a Function, which is inside another function.
 
 ### Task 2c - Exit Ticket
 
